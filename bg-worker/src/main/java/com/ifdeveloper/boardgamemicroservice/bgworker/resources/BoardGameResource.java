@@ -2,7 +2,10 @@ package com.ifdeveloper.boardgamemicroservice.bgworker.resources;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +18,12 @@ import com.ifdeveloper.boardgamemicroservice.bgworker.repositories.BoardGameRepo
 @RestController
 @RequestMapping("/boardgames")
 public class BoardGameResource {
+	
+	private static Logger log = LoggerFactory.getLogger(BoardGameResource.class);
 
+	@Autowired
+	private Environment env;
+	
 	@Autowired
 	private BoardGameRepository repository;
 	
@@ -27,6 +35,9 @@ public class BoardGameResource {
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<BoardGame> findById(@PathVariable Long id) {
+		
+		log.info("[bg-worker] Port {}", env.getProperty("local.server.port"));
+		
 		BoardGame boardGame = repository.findById(id).get();
 		return ResponseEntity.ok(boardGame);
 	}

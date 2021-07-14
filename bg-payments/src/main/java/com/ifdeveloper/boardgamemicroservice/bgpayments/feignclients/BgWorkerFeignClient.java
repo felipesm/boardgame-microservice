@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ifdeveloper.boardgamemicroservice.bgpayments.entities.BoardGame;
 
-
 @Component
-@FeignClient(name = "bg-worker", url = "localhost:8001", path = "/boardgames")
+@FeignClient(name = "bg-worker", path = "/boardgames")
 public interface BgWorkerFeignClient {
 
 	@GetMapping(value = "/{id}")
