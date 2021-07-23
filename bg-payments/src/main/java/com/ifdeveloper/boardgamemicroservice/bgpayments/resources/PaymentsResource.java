@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ifdeveloper.boardgamemicroservice.bgpayments.entities.Payments;
 import com.ifdeveloper.boardgamemicroservice.bgpayments.services.PaymentsService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 @RequestMapping(value = "/payments")
@@ -17,9 +18,15 @@ public class PaymentsResource {
 	@Autowired
 	private PaymentsService service;
 	
+	@HystrixCommand(fallbackMethod = "getPaymentsAlternativa")
 	@GetMapping(value = "/{idBoardGame}/days/{days}")
 	public ResponseEntity<Payments> getPayments(@PathVariable Long idBoardGame, @PathVariable Integer days) {
 		Payments payment = service.getPayments(idBoardGame, days);
+		return ResponseEntity.ok(payment);
+	}
+	
+	public ResponseEntity<Payments> getPaymentsAlternativa(Long idBoardGame, Integer days) {
+		Payments payment = new Payments("Jogatina Carcassonne", 25.00, days);
 		return ResponseEntity.ok(payment);
 	}
 }
