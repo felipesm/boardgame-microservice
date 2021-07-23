@@ -29,6 +29,8 @@ public class BoardGameResource {
 	
 	@GetMapping
 	public ResponseEntity<List<BoardGame>> findAll() {
+		log.info("[bg-worker] /boardgames - Port {}", env.getProperty("local.server.port"));
+		
 		List<BoardGame> list = repository.findAll();
 		return ResponseEntity.ok(list);
 	}
@@ -36,7 +38,7 @@ public class BoardGameResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<BoardGame> findById(@PathVariable Long id) {
 		
-		log.info("[bg-worker] Port {}", env.getProperty("local.server.port"));
+		log.info("[bg-worker] /boardgames/id - Port {}", env.getProperty("local.server.port"));
 		
 		BoardGame boardGame = repository.findById(id).get();
 		return ResponseEntity.ok(boardGame);
