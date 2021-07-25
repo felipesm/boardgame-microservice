@@ -1,5 +1,5 @@
-INSERT INTO user (name, password, email) VALUES ('Xanthe Tillman', '1234', 'xanthe@mail.com');
-INSERT INTO user (name, password, email) VALUES ('Nicole Ratcliffe', '4567', 'nicole@mail.com');
+INSERT INTO user (name, password, email) VALUES ('Xanthe Tillman', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu', 'xanthe@mail.com');
+INSERT INTO user (name, password, email) VALUES ('Nicole Ratcliffe', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu', 'nicole@mail.com');
 
 INSERT INTO role (role_name) VALUES ('ROLE_OPERATOR');
 INSERT INTO role (role_name) VALUES ('ROLE_ADMIN');
