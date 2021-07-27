@@ -20,7 +20,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] OPERATOR = {"/bg-worker/**"};
 	
-	private static final String[] ADMIN = {"/bg-payments/**", "/bg-user/**"};
+	private static final String[] ADMIN = {"/bg-payments/**", "/bg-user/**", "/actuator/**", "/bg-worker/actuator/**", "/bg-oauth/actuator/**"};
 	
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
