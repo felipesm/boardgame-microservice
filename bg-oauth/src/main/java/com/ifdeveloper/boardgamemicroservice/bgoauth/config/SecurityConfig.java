@@ -1,4 +1,4 @@
-	package com.ifdeveloper.boardgamemicroservice.bgoauth.config;
+package com.ifdeveloper.boardgamemicroservice.bgoauth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
