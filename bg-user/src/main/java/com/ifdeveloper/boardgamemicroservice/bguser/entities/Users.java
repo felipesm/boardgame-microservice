@@ -16,8 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
-public class User implements Serializable {
+@Table(name = "users")
+public class Users implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -41,10 +41,10 @@ public class User implements Serializable {
 			)
 	private Set<Role> roles = new HashSet<>();
 	
-	public User() {
+	public Users() {
 	}
 
-	public User(Long id, String name, String password, String email) {
+	public Users(Long id, String name, String password, String email) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -104,7 +104,7 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Users other = (Users) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

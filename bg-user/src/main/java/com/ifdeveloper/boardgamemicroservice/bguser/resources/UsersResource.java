@@ -8,25 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ifdeveloper.boardgamemicroservice.bguser.entities.User;
-import com.ifdeveloper.boardgamemicroservice.bguser.repositories.UserRepository;
+import com.ifdeveloper.boardgamemicroservice.bguser.entities.Users;
+import com.ifdeveloper.boardgamemicroservice.bguser.repositories.UsersRepository;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UsersResource {
 
 	@Autowired
-	private UserRepository repository;
+	private UsersRepository repository;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id) {
-		User user = repository.findById(id).get();
+	public ResponseEntity<Users> findById(@PathVariable Long id) {
+		Users user = repository.findById(id).get();
 		return ResponseEntity.ok(user);
 	}
 	
 	@GetMapping(value = "/email")
-	public ResponseEntity<User> findByEmail(@RequestParam String email) {
-		User user = repository.findByEmail(email);
+	public ResponseEntity<Users> findByEmail(@RequestParam String email) {
+		Users user = repository.findByEmail(email);
 		return ResponseEntity.ok(user);
 	}
 }
